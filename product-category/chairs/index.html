@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f3ed" />
+    <meta name="description" content="Explore thoughtful chairs and seating for every corner of home." />
+    <title>Chairs — Form &amp; Field</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="stylesheet" href="../../pages.css" />
+    <script src="../../page-shell.js" defer></script>
+    <script src="../../chairs.js" defer></script>
+  </head>
+  <body>
+    <main class="catalog-page" id="main-content">
+      <section class="category-hero">
+        <div class="category-hero-inner">
+          <p class="eyebrow">Take a seat</p>
+          <h1>Chairs <em>for living.</em></h1>
+          <p>Thoughtful silhouettes, easy comfort, and lasting materials for the moments that make a room yours.</p>
+        </div>
+      </section>
+
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="../../index.html">Home</a><span aria-hidden="true">/</span><span>Chairs</span>
+      </nav>
+
+      <section class="catalog-layout" id="catalog-products" aria-labelledby="catalog-title">
+        <aside class="catalog-sidebar" aria-label="Filter chairs">
+          <div class="filter-heading">
+            <h2>Refine your edit</h2>
+            <button type="button" class="filter-clear">Clear all</button>
+          </div>
+          <fieldset class="filter-group price-filter">
+            <legend>Price</legend>
+            <label for="price-range">Up to <output id="price-output" for="price-range">$900</output></label>
+            <input id="price-range" type="range" min="275" max="900" value="900" step="25" />
+          </fieldset>
+          <fieldset class="filter-group">
+            <legend>Maker</legend>
+            <label><input type="checkbox" name="brand" value="Form & Field" /> <span>Form &amp; Field</span><small>4</small></label>
+            <label><input type="checkbox" name="brand" value="Atelier Noma" /> <span>Atelier Noma</span><small>3</small></label>
+            <label><input type="checkbox" name="brand" value="Juniper Studio" /> <span>Juniper Studio</span><small>3</small></label>
+            <label><input type="checkbox" name="brand" value="Alder Works" /> <span>Alder Works</span><small>2</small></label>
+          </fieldset>
+          <fieldset class="filter-group">
+            <legend>Color</legend>
+            <label><input type="checkbox" name="color" value="Natural" /> <span>Natural</span><small>4</small></label>
+            <label><input type="checkbox" name="color" value="Ivory" /> <span>Ivory</span><small>3</small></label>
+            <label><input type="checkbox" name="color" value="Olive" /> <span>Olive</span><small>3</small></label>
+            <label><input type="checkbox" name="color" value="Charcoal" /> <span>Charcoal</span><small>2</small></label>
+          </fieldset>
+          <fieldset class="filter-group">
+            <legend>Material</legend>
+            <label><input type="checkbox" name="material" value="Wood" /> <span>Wood</span><small>5</small></label>
+            <label><input type="checkbox" name="material" value="Upholstery" /> <span>Upholstery</span><small>4</small></label>
+            <label><input type="checkbox" name="material" value="Metal" /> <span>Metal</span><small>3</small></label>
+          </fieldset>
+        </aside>
+
+        <div class="catalog-results">
+          <div class="catalog-toolbar">
+            <p class="catalog-count" aria-live="polite">Showing 12 thoughtful pieces</p>
+            <label class="sort-control">Sort by
+              <select id="sort-products" aria-label="Sort chairs">
+                <option value="featured">Featured</option>
+                <option value="price-low">Price: low to high</option>
+                <option value="price-high">Price: high to low</option>
+                <option value="name">Name</option>
+              </select>
+            </label>
+          </div>
+          <div class="catalog-grid" aria-live="polite"></div>
+          <p class="catalog-note">A considered collection, chosen to feel at home for years to come.</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
