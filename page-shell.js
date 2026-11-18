@@ -11,9 +11,8 @@ const shellHeader = `
           <path class="menu-line menu-line-bottom" d="M3 17h18" />
         </svg>
       </button>
-      <a class="wordmark" href="${siteLink('index.html#top')}" aria-label="Form and Field home">
-        <span class="wordmark-mark" aria-hidden="true">F<span>&</span>F</span>
-        <span class="wordmark-name">form <i>&</i> field</span>
+      <a class="wordmark" href="${siteLink('index.html#top')}" aria-label="Home Scape home">
+        <img class="wordmark-image" src="${siteLink('img/logo.png')}" alt="Home Scape" />
       </a>
       <div class="header-actions">
         <a class="search-toggle" href="#main-content" aria-label="Browse the collection">
@@ -53,9 +52,8 @@ const shellFooter = `
   <footer class="site-footer" id="footer">
     <div class="footer-inner">
       <div class="footer-brand-row">
-        <a class="wordmark footer-wordmark" href="${siteLink('index.html#top')}" aria-label="Form and Field home">
-          <span class="wordmark-mark" aria-hidden="true">F<span>&</span>F</span>
-          <span class="wordmark-name">form <i>&</i> field</span>
+        <a class="wordmark footer-wordmark" href="${siteLink('index.html#top')}" aria-label="Home Scape home">
+          <img class="wordmark-image" src="${siteLink('img/logo.png')}" alt="Home Scape" />
         </a>
         <div class="footer-socials" aria-label="Follow Form and Field">
           <strong>Follow us:</strong>

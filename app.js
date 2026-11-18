@@ -40,15 +40,26 @@ const products = [
 ];
 
 const heroImage = document.querySelector('.hero-image');
+const nextHeroImage = heroImage.cloneNode(false);
+nextHeroImage.classList.remove('is-active');
+nextHeroImage.classList.add('hero-image-next');
+nextHeroImage.alt = '';
+nextHeroImage.setAttribute('aria-hidden', 'true');
+heroImage.insertAdjacentElement('afterend', nextHeroImage);
 const heroEyebrow = document.querySelector('.hero-eyebrow');
 const heroTitle = document.querySelector('.hero-title');
 const heroDescription = document.querySelector('.hero-description');
 const heroCta = document.querySelector('.hero-cta');
+const heroCopy = document.querySelector('.hero-copy');
 const slideCurrent = document.querySelector('.slide-current');
 const sliderDots = document.querySelector('.slider-dots');
 const sliderProgress = document.querySelector('.slider-progress');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 let activeSlide = 0;
+let visibleHeroImage = heroImage;
+let incomingHeroImage = nextHeroImage;
+let imageTransitionId = 0;
+let heroCopyTimer;
 let slideTimer;
 let toastTimer;
 const bag = [];
@@ -65,16 +76,33 @@ function renderDots() {
 function showSlide(index, restart = true) {
   activeSlide = (index + slides.length) % slides.length;
   const slide = slides[activeSlide];
-  heroImage.classList.add('is-changing');
-  window.setTimeout(() => {
-    heroImage.src = slide.image;
-    heroImage.alt = slide.alt;
+  const transitionId = ++imageTransitionId;
+  const previousImage = visibleHeroImage;
+  const nextImage = incomingHeroImage;
+  const activateImage = () => {
+    if (transitionId !== imageTransitionId) return;
+    nextImage.alt = slide.alt;
+    nextImage.classList.add('is-active');
+    previousImage.classList.remove('is-active');
+    visibleHeroImage = nextImage;
+    incomingHeroImage = previousImage;
+    nextImage.onload = null;
+  };
+
+  nextImage.onload = activateImage;
+  nextImage.src = slide.image;
+  if (nextImage.complete && nextImage.naturalWidth > 0) activateImage();
+
+  heroCopy.classList.add('is-changing');
+  window.clearTimeout(heroCopyTimer);
+  heroCopyTimer = window.setTimeout(() => {
+    if (transitionId !== imageTransitionId) return;
     heroEyebrow.innerHTML = `${slide.eyebrow} <span></span>`;
     heroTitle.innerHTML = slide.title;
     heroDescription.textContent = slide.description;
     heroCta.innerHTML = `${slide.cta} <span aria-hidden="true">↗</span>`;
-    heroImage.classList.remove('is-changing');
-  }, 180);
+    window.requestAnimationFrame(() => heroCopy.classList.remove('is-changing'));
+  }, 220);
   slideCurrent.textContent = String(activeSlide + 1).padStart(2, '0');
   renderDots();
   if (restart) startSlider();
